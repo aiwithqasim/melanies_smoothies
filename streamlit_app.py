@@ -30,6 +30,9 @@ if incredient_list:
     
     incredient_string = ''
     for fruite_choosen in incredient_list:
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        # st.text(smoothiefroot_response.json())
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
         incredient_string += fruite_choosen + ' '
 
     # st.write(incredient_string)
@@ -44,6 +47,4 @@ if incredient_list:
         session.sql(my_insert_stmt).collect()
         st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
         
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
-sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
