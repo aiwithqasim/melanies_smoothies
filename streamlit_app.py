@@ -30,10 +30,12 @@ if incredient_list:
     
     incredient_string = ''
     for fruite_choosen in incredient_list:
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        incredient_string += fruite_choosen + ' '
+        st.subheader(f"{fruite_choosen} Nutrition Information")
+        smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{fruite_choosen}")
         # st.text(smoothiefroot_response.json())
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
-        incredient_string += fruite_choosen + ' '
+        
 
     # st.write(incredient_string)
     
